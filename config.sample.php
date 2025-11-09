@@ -55,44 +55,10 @@ define('SUPPORT_PHONE', '+254791024153');
 date_default_timezone_set('Africa/Nairobi');
 
 // Session Configuration
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_secure', 0); // Set to 1 if using HTTPS
-
-/**
- * Plan Configurations
- * Define your hotspot plans here - must match frontend plans
- */
-$PLANS = [
-    '2h' => [
-        'name' => '2 Hours',
-        'price' => 10,
-        'uptime_limit' => '2h',
-        'profile' => 'default',
-        'description' => 'Valid for 2 hours'
-    ],
-    '6h' => [
-        'name' => '6 Hours',
-        'price' => 20,
-        'uptime_limit' => '6h',
-        'profile' => 'default',
-        'description' => 'Valid for 6 hours'
-    ],
-    '24h' => [
-        'name' => '1 Day',
-        'price' => 50,
-        'uptime_limit' => '1d',
-        'profile' => 'default',
-        'description' => 'Valid for 24 hours'
-    ],
-    '7d' => [
-        'name' => '7 Days',
-        'price' => 200,
-        'uptime_limit' => '7d',
-        'profile' => 'default',
-        'description' => 'Valid for 7 days'
-    ]
-];
+/**ini_set('session.cookie_httponly', 1);
+*ini_set('session.use_only_cookies', 1);
+*ini_set('session.cookie_secure', 0); // Set to 1 if using HTTPS
+**/
 
 /**
  * Get Database Connection

@@ -201,7 +201,7 @@
         font-size: 16px;
         font-weight: 600;
         cursor: pointer;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #4CAF50;
         color: white;
         transition: all 0.2s ease;
         box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -349,6 +349,9 @@
       <div class="header">
         <h1>Uptime Hotspot</h1>
         <p>Please choose a plan or login</p>
+        <p style="color: rgb(255, 8, 8); font-weight: 800">
+          UNDER DEVELOPMENT, PLEASE DON'T COMPLETE ANY PAYMENTS!
+        </p>
       </div>
 
       <!-- Tabs -->
@@ -417,7 +420,7 @@
           >
             <div>
               <strong>24 Hours</strong>
-              <p>Valid 24 hours</p>
+              <p>Valid 1 day</p>
             </div>
             <div>KES 40</div>
           </div>
@@ -427,12 +430,12 @@
             class="plan"
             data-plan="48h"
             data-amount="70"
-            data-name="48 Hours"
+            data-name="48_Hours"
             onclick="selectPlan(this)"
           >
             <div>
               <strong>48 Hours</strong>
-              <p>Valid 48 hours</p>
+              <p>Valid 2 days</p>
             </div>
             <div>KES 70</div>
           </div>
@@ -447,11 +450,11 @@
           >
             <div>
               <strong>7 Days</strong>
-              <p>Valid 7 days</p>
+              <p>Valid 1 week</p>
             </div>
             <div>KES 240</div>
           </div>
-          <div id="payment-7d" class="payment-form"></div>
+          <div id="payment-1w" class="payment-form"></div>
         </div>
       </div>
 
@@ -490,7 +493,7 @@
             </svg>
             <span>+254 791 024 153</span>
           </a>
-          <a href="mailto:uptimehotspot@gmail.com" class="support-item">
+          <a href="mailto:uptimetechmasters@gmail.com" class="support-item">
             <svg class="support-icon" fill="currentColor" viewBox="0 0 20 20">
               <path
                 d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
@@ -499,7 +502,7 @@
                 d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
               />
             </svg>
-            <span>uptimehotspot@gmail.com</span>
+            <span>uptimetechmasters@gmail.com</span>
           </a>
         </div>
       </div>
@@ -559,11 +562,11 @@
         form.innerHTML = `
         <div class="payment-header">Purchasing ${selectedPlanName} @ KES ${selectedAmount}</div>
         <div class="form-group">
-            <label>M-Pesa Phone</label>
+            <label>M-Pesa Phone Number:</label>
             <input type="tel" id="phone" placeholder="07XXXXXXXX or 01XXXXXXXX" maxlength="10">
         </div>
-        <button class="btn" onclick="initiateMpesa()" id="payBtn">Pay KES ${selectedAmount} with M-Pesa</button>
-        <button class="btn" style="background:#6c757d;margin-top:10px;" onclick="resetPlans()">Cancel</button>
+        <button class="btn" onclick="initiateMpesa()" id="payBtn">Pay KES ${selectedAmount}</button>
+        <button class="btn" style="background:#e53935;margin-top:10px;" onclick="resetPlans()">Cancel</button>
     `;
       }
 
@@ -652,7 +655,7 @@
               "Unexpected server response. Please try again."
             );
             payBtn.disabled = false;
-            payBtn.innerHTML = `Pay KES ${selectedAmount} with M-Pesa`;
+            payBtn.innerHTML = `Pay KES ${selectedAmount}`;
             return;
           }
 
@@ -674,7 +677,7 @@
             error.message || "Payment failed. Please try again."
           );
           payBtn.disabled = false;
-          payBtn.innerHTML = `<span>Pay KES ${selectedAmount} with M-Pesa</span>`;
+          payBtn.innerHTML = `<span>Pay KES ${selectedAmount}</span>`;
         }
       }
 
@@ -711,7 +714,7 @@
               showMessage(
                 "message-plans",
                 "success",
-                "Payment successful! Logging you in..."
+                "Payment successful! Connecting you..."
               );
               setTimeout(() => {
                 createAccountAndLogin(data.username, data.password);
@@ -740,7 +743,7 @@
             const payBtn = document.getElementById("payBtn");
             if (payBtn) {
               payBtn.disabled = false;
-              payBtn.innerHTML = `Pay KES ${selectedAmount} with M-Pesa`;
+              payBtn.innerHTML = `Pay KES ${selectedAmount}`;
             }
           }
         };

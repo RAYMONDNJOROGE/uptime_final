@@ -205,7 +205,7 @@ try {
     $stmt = $pdo->prepare("
         SELECT * FROM transactions 
         WHERE phone = ? AND status = 'pending' 
-        AND created_at > DATE_SUB(NOW(), INTERVAL 2 MINUTE)
+        AND created_at > DATE_SUB(NOW(), INTERVAL 1 MINUTE)
         ORDER BY created_at DESC LIMIT 1
     ");
     $stmt->execute([$phone]);
@@ -214,7 +214,7 @@ try {
     if ($pendingTx) {
         sendJSON([
             'success' => false, 
-            'message' => 'You have a pending payment. Please complete it or wait 2 minutes before trying again.'
+            'message' => 'You have a pending payment. Please complete it or wait 1 minute before trying again.'
         ], 400);
     }
     
@@ -243,9 +243,15 @@ try {
         error_log('Failed to get M-Pesa access token');
         sendJSON(['success' => false, 'message' => 'Payment service temporarily unavailable. Please try again.'], 503);
     }
+
+    function generateRandomAlphaNum($length = 6) {
+            $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle(str_repeat($chars, 5)), 0, $length);
+    }
+
     
     // Initiate STK Push
-    $accountRef = $planName . "-" . substr($phone, -4) . '_' . rand(1000, 9999);
+    $accountRef = $planName . "-" . substr($phone, -4) . '_' . generateRandomAlphaNum();
     $description = "Payment for $planName";
     $stkResponse = initiateSTKPush($phone, $amount, $accountRef, $description, $accessToken);
     

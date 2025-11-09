@@ -1,9 +1,21 @@
-[09-Nov-2025 17:12:36 Africa/Nairobi] Payment initiation error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_ip' in 'where clause'
-[09-Nov-2025 17:16:47 Africa/Nairobi] Payment initiation error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_ip' in 'where clause'
-[09-Nov-2025 17:16:58 Africa/Nairobi] Payment initiation error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'request_ip' in 'where clause'
-[09-Nov-2025 17:19:44 Africa/Nairobi] cURL Error getting access token: SSL certificate problem: self-signed certificate in certificate chain
-[09-Nov-2025 17:19:44 Africa/Nairobi] Failed to get M-Pesa access token
-[09-Nov-2025 17:20:23 Africa/Nairobi] cURL Error getting access token: SSL certificate problem: self-signed certificate in certificate chain
-[09-Nov-2025 17:20:23 Africa/Nairobi] Failed to get M-Pesa access token
-[09-Nov-2025 17:28:33 Africa/Nairobi] cURL Error initiating STK: SSL certificate problem: self-signed certificate in certificate chain
-[09-Nov-2025 17:28:33 Africa/Nairobi] STK Push initiation failed - no response
+[10-Nov-2025 00:59:37 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 00:59:37 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 00:59:37 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:00:06 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:00:11 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:00:11 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:33 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:33 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:34 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:50 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:50 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:01:50 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:01 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:05 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:05 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:14 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:20 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:20 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:02:20 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
