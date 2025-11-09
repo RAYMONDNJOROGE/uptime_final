@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     mac VARCHAR(20) DEFAULT NULL,
+    request_ip VARCHAR(45) DEFAULT NULL, -- ✅ NEW COLUMN
     status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
     mpesa_receipt VARCHAR(50) DEFAULT NULL,
     error_message TEXT DEFAULT NULL,
@@ -36,7 +37,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     INDEX idx_checkout_request (checkout_request_id),
     INDEX idx_phone (phone),
     INDEX idx_status (status),
-    INDEX idx_created_at (created_at)
+    INDEX idx_created_at (created_at),
+    INDEX idx_request_ip (request_ip) -- ✅ NEW INDEX
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Users table - stores user accounts

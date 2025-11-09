@@ -12,69 +12,98 @@
         box-sizing: border-box;
       }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
-          sans-serif;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        min-height: 100vh;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: #ffffff;
+        min-height: 100dvh;
+        margin: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 5px;
+        overflow: hidden;
       }
 
-      /* Container */
       .container {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 650px;
         width: 100%;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        max-height: calc(100dvh - 2rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: relative;
+        z-index: 1;
       }
 
       /* Header */
       .header {
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 25px 20px;
+        padding: 10px 20px;
         text-align: center;
+        position: relative;
       }
       .header h1 {
-        font-size: 26px;
-        margin-bottom: 5px;
+        font-size: 32px;
+        margin-bottom: 8px;
+        font-weight: 700;
+        position: relative;
+        letter-spacing: -0.5px;
       }
       .header p {
-        font-size: 14px;
-        opacity: 0.9;
+        font-size: 15px;
+        opacity: 0.95;
+        position: relative;
+        font-weight: 400;
       }
 
       /* Tabs */
       .tabs {
         display: flex;
-        gap: 10px;
-        margin: 15px;
+        gap: 0;
+        margin: 0;
+        padding: 0 20px;
+        background: #f8f9ff;
+        border-bottom: 2px solid #e8ebf7;
       }
       .tab {
         flex: 1;
-        padding: 10px;
+        padding: 18px 16px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
-        color: #666;
-        border-bottom: 3px solid transparent;
-        background: none;
+        color: #64748b;
         border: none;
-        transition: all 0.3s;
+        background: transparent;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        border-bottom: 3px solid transparent;
+      }
+      .tab:hover {
+        color: #667eea;
+        background: rgba(102, 126, 234, 0.05);
       }
       .tab.active {
         color: #667eea;
+        background: white;
         border-bottom-color: #667eea;
       }
+      .tab.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 3px 3px 0 0;
+      }
+
       .tab-content {
         display: none;
-        padding: 0 20px 20px 20px;
+        padding: 30px 25px;
       }
       .tab-content.active {
         display: block;
@@ -82,134 +111,174 @@
 
       /* Form & plans */
       .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
       label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
         font-size: 14px;
         font-weight: 600;
-        color: #333;
+        color: #1e293b;
+        letter-spacing: 0.2px;
       }
       input {
         width: 100%;
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        font-size: 14px;
-        transition: border-color 0.3s;
+        padding: 14px 16px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        background: white;
+        color: #1e293b;
       }
       input:focus {
         outline: none;
         border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        background: #fafbff;
+      }
+      input::placeholder {
+        color: #94a3b8;
       }
 
       /* Plans */
       .plans {
         display: grid;
-        gap: 12px;
+        gap: 14px;
         margin-bottom: 10px;
       }
       .plan {
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 18px 20px;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.2s ease;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background: white;
+        position: relative;
       }
       .plan:hover {
         border-color: #667eea;
-        background: #f8f9ff;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
       }
       .plan.selected {
         border-color: #667eea;
-        background: #f0f3ff;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.08),
+          rgba(118, 75, 162, 0.08)
+        );
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
       }
       .plan.hidden {
         display: none;
+      }
+      .plan strong {
+        font-size: 16px;
+        color: #1e293b;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .plan p {
+        font-size: 13px;
+        color: #64748b;
+      }
+      .plan > div:last-child {
+        font-size: 20px;
+        font-weight: 700;
+        color: #667eea;
+        position: relative;
       }
 
       /* Buttons */
       .btn {
         width: 100%;
-        padding: 12px;
+        padding: 16px;
         border: none;
-        border-radius: 8px;
-        font-size: 15px;
+        border-radius: 12px;
+        font-size: 16px;
         font-weight: 600;
         cursor: pointer;
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        transition: transform 0.2s;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
       }
       .btn:hover {
-        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+      .btn:active {
+        transform: translateY(1px);
       }
       .btn:disabled {
         opacity: 0.6;
         cursor: not-allowed;
-        transform: none;
       }
 
       /* Messages */
       .message {
-        padding: 10px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        font-size: 13px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        font-size: 14px;
         display: none;
+        font-weight: 500;
+        border-left: 4px solid;
       }
       .message.success {
-        background: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
+        background: #d4f4dd;
+        color: #0d5c2d;
+        border-color: #0d5c2d;
       }
       .message.error {
-        background: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+        background: #fde8e9;
+        color: #991b1b;
+        border-color: #991b1b;
       }
       .message.info {
-        background: #d1ecf1;
-        color: #0c5460;
-        border: 1px solid #bee5eb;
+        background: #dbeafe;
+        color: #1e3a8a;
+        border-color: #1e3a8a;
       }
 
       /* Payment form */
       .payment-form {
         display: none;
-        padding: 15px;
-        background: #f8f9ff;
+        padding: 20px;
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f3ff 100%);
         border: 2px solid #667eea;
-        border-radius: 8px;
-        margin-bottom: 10px;
+        border-radius: 16px;
+        margin-bottom: 14px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
       }
       .payment-header {
-        font-size: 14px;
+        font-size: 15px;
         color: #667eea;
-        font-weight: 600;
-        margin-bottom: 10px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: 0.3px;
       }
 
       /* Support */
       .support-section {
         text-align: center;
-        padding: 15px 20px;
+        padding: 25px 30px;
         border-top: 2px solid #f0f0f0;
+        background: #fafbff;
       }
       .support-title {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #333;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #1e293b;
+        letter-spacing: 0.3px;
       }
       .support-info {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
       }
       .support-item {
         color: #667eea;
@@ -217,26 +286,31 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 5px;
-        font-size: 13px;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
       }
       .support-item:hover {
         color: #764ba2;
+        background: rgba(102, 126, 234, 0.08);
       }
       .support-icon {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
       }
 
       /* Loader */
       .loading {
         display: inline-block;
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border: 3px solid rgba(255, 255, 255, 0.3);
         border-radius: 50%;
         border-top-color: #fff;
-        animation: spin 1s linear infinite;
+        animation: spin 0.8s linear infinite;
       }
       @keyframes spin {
         to {
@@ -246,16 +320,25 @@
 
       /* Responsive */
       @media (max-width: 480px) {
+        .container {
+          border-radius: 20px;
+        }
+        .header {
+          padding: 32px 25px;
+        }
         .header h1 {
-          font-size: 22px;
+          font-size: 28px;
         }
         .tab {
-          font-size: 13px;
-          padding: 8px;
+          font-size: 14px;
+          padding: 16px 12px;
+        }
+        .tab-content {
+          padding: 25px 20px;
         }
         .btn {
-          font-size: 14px;
-          padding: 10px;
+          font-size: 15px;
+          padding: 14px;
         }
       }
     </style>
@@ -265,7 +348,7 @@
       <!-- Header -->
       <div class="header">
         <h1>Uptime Hotspot</h1>
-        <p>Select a plan or login</p>
+        <p>Please choose a plan or login</p>
       </div>
 
       <!-- Tabs -->
@@ -282,14 +365,29 @@
         <div class="plans">
           <div
             class="plan"
+            data-plan="30min"
+            data-amount="5"
+            data-name="30_Minutes"
+            onclick="selectPlan(this)"
+          >
+            <div>
+              <strong>30 Minutes</strong>
+              <p>Valid 30 Minutes</p>
+            </div>
+            <div>KES 5</div>
+          </div>
+          <div id="payment-30min" class="payment-form"></div>
+
+          <div
+            class="plan"
             data-plan="2h"
             data-amount="10"
-            data-name="2 Hours"
+            data-name="2_Hours"
             onclick="selectPlan(this)"
           >
             <div>
               <strong>2 Hours</strong>
-              <p style="font-size: 12px; color: #666">Valid 2 hours</p>
+              <p>Valid 2 hours</p>
             </div>
             <div>KES 10</div>
           </div>
@@ -297,91 +395,61 @@
 
           <div
             class="plan"
-            data-plan="6h"
-            data-amount="20"
-            data-name="6 Hours"
+            data-plan="12h"
+            data-amount="30"
+            data-name="12_Hours"
             onclick="selectPlan(this)"
           >
             <div>
-              <strong>6 Hours</strong>
-              <p style="font-size: 12px; color: #666">Valid 6 hours</p>
+              <strong>12 Hours</strong>
+              <p>Valid 12 hours</p>
             </div>
-            <div>KES 20</div>
+            <div>KES 30</div>
           </div>
-          <div id="payment-6h" class="payment-form"></div>
-
-          <div
-            class="plan"
-            data-plan="6h"
-            data-amount="20"
-            data-name="6 Hours"
-            onclick="selectPlan(this)"
-          >
-            <div>
-              <strong>6 Hours</strong>
-              <p style="font-size: 12px; color: #666">Valid 6 hours</p>
-            </div>
-            <div>KES 20</div>
-          </div>
-          <div id="payment-6h" class="payment-form"></div>
-
-          <div
-            class="plan"
-            data-plan="6h"
-            data-amount="20"
-            data-name="6 Hours"
-            onclick="selectPlan(this)"
-          >
-            <div>
-              <strong>6 Hours</strong>
-              <p style="font-size: 12px; color: #666">Valid 6 hours</p>
-            </div>
-            <div>KES 20</div>
-          </div>
-          <div id="payment-6h" class="payment-form"></div>
-
-          <div
-            class="plan"
-            data-plan="6h"
-            data-amount="20"
-            data-name="6 Hours"
-            onclick="selectPlan(this)"
-          >
-            <div>
-              <strong>6 Hours</strong>
-              <p style="font-size: 12px; color: #666">Valid 6 hours</p>
-            </div>
-            <div>KES 20</div>
-          </div>
-          <div id="payment-6h" class="payment-form"></div>
+          <div id="payment-12h" class="payment-form"></div>
 
           <div
             class="plan"
             data-plan="24h"
-            data-amount="50"
-            data-name="1 Day"
+            data-amount="40"
+            data-name="24_Hours"
             onclick="selectPlan(this)"
           >
             <div>
-              <strong>1 Day</strong>
-              <p style="font-size: 12px; color: #666">Valid 24 hours</p>
+              <strong>24 Hours</strong>
+              <p>Valid 24 hours</p>
             </div>
-            <div>KES 50</div>
+            <div>KES 40</div>
           </div>
           <div id="payment-24h" class="payment-form"></div>
 
           <div
             class="plan"
-            data-plan="7d"
-            data-amount="200"
-            data-name="7 Days"
+            data-plan="48h"
+            data-amount="70"
+            data-name="48 Hours"
+            onclick="selectPlan(this)"
+          >
+            <div>
+              <strong>48 Hours</strong>
+              <p>Valid 48 hours</p>
+            </div>
+            <div>KES 70</div>
+          </div>
+          <div id="payment-48h" class="payment-form"></div>
+
+          <div
+            class="plan"
+            data-plan="1w"
+            data-amount="240"
+            data-name="1_Week"
             onclick="selectPlan(this)"
           >
             <div>
               <strong>7 Days</strong>
-              <p style="font-size: 12px; color: #666">Valid 7 days</p>
+              <p>Valid 7 days</p>
             </div>
-            <div>KES 200</div>
+            <div>KES 240</div>
           </div>
           <div id="payment-7d" class="payment-form"></div>
         </div>
@@ -440,7 +508,7 @@
     <script src="md5.js"></script>
     <script>
       // Configuration - Update this to your backend URL
-      const BACKEND_URL = "https://db3935ac5eff.ngrok-free.app";
+      const BACKEND_URL = "https://720c4e42a396.ngrok-free.app";
 
       // Tab switching - Fixed to handle event properly
       function switchTab(event, tab) {
@@ -495,7 +563,7 @@
             <input type="tel" id="phone" placeholder="07XXXXXXXX or 01XXXXXXXX" maxlength="10">
         </div>
         <button class="btn" onclick="initiateMpesa()" id="payBtn">Pay KES ${selectedAmount} with M-Pesa</button>
-        <button class="btn" style="background:#6c757d;margin-top:5px;" onclick="resetPlans()">Cancel</button>
+        <button class="btn" style="background:#6c757d;margin-top:10px;" onclick="resetPlans()">Cancel</button>
     `;
       }
 
@@ -556,7 +624,7 @@
           '<span class="loading"></span> Processing payment...';
 
         try {
-          const response = await fetch(`${BACKEND_URL}/pay.php`, {
+          const response = await fetch(`${BACKEND_URL}/api/pay.php`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -584,7 +652,7 @@
               "Unexpected server response. Please try again."
             );
             payBtn.disabled = false;
-            payBtn.textContent = `Pay KES ${selectedAmount} with M-Pesa`;
+            payBtn.innerHTML = `Pay KES ${selectedAmount} with M-Pesa`;
             return;
           }
 
@@ -606,7 +674,7 @@
             error.message || "Payment failed. Please try again."
           );
           payBtn.disabled = false;
-          payBtn.textContent = `Pay KES ${selectedAmount} with M-Pesa`;
+          payBtn.innerHTML = `<span>Pay KES ${selectedAmount} with M-Pesa</span>`;
         }
       }
 
@@ -618,7 +686,7 @@
         const checkStatus = async () => {
           try {
             const response = await fetch(
-              `${BACKEND_URL}/callback.php?checkoutRequestId=${checkoutRequestId}`
+              `${BACKEND_URL}/api/callback.php?checkoutRequestId=${checkoutRequestId}`
             );
 
             const text = await response.text();
@@ -672,7 +740,7 @@
             const payBtn = document.getElementById("payBtn");
             if (payBtn) {
               payBtn.disabled = false;
-              payBtn.textContent = `Pay KES ${selectedAmount} with M-Pesa`;
+              payBtn.innerHTML = `Pay KES ${selectedAmount} with M-Pesa`;
             }
           }
         };

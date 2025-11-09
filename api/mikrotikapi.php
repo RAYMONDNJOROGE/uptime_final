@@ -4,7 +4,7 @@
  * Updated using working logic from MikroTikManual
  */
 
-require_once 'config.php';
+require_once __DIR__ . '/../config.php';
 
 class MikrotikAPI {
     private string $host;
