@@ -7,6 +7,9 @@ session_start();
 require_once __DIR__ . '/config.php';
 $pdo = getDBConnection();
 
+$maxAttempts = 5;
+$lockoutMinutes = 15;
+$ip = $_SERVER['REMOTE_ADDR'];
 $message = '';
 $isError = false;
 
@@ -18,47 +21,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = trim($_POST['auth_token'] ?? '');
 
     if (!$username || !$email || !$password || !$confirm || !$token) {
-        $message = "⚠️ All fields are required.";
+        $message = "All fields are required.";
         $isError = true;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $message = "⚠️ Invalid email format.";
+        $message = "Invalid email format.";
         $isError = true;
     } elseif ($password !== $confirm) {
-        $message = "⚠️ Passwords do not match.";
+        $message = "Passwords do not match.";
         $isError = true;
     } else {
         try {
-            $normalizedToken = strtolower($token);
-            $normalizedEmail = strtolower($email);
+            // Check lockout
+            $stmt = $pdo->prepare("SELECT attempts, last_attempt FROM login_attempts WHERE username = ? AND ip_address = ?");
+            $stmt->execute([$username, $ip]);
+            $attempt = $stmt->fetch();
+            $remainingAttempts = $maxAttempts;
 
-            $stmt = $pdo->prepare("SELECT id FROM registration_tokens WHERE LOWER(token) = ? AND LOWER(recipient_email) = ? AND used = 0 AND expires_at > NOW() LIMIT 1");
-            $stmt->execute([$normalizedToken, $normalizedEmail]);
-            $validToken = $stmt->fetch();
-
-            if (!$validToken) {
-                $message = "Invalid or expired authorization token for this email.";
-                $isError = true;
-            } else {
-                $stmt = $pdo->prepare("SELECT id FROM admins WHERE username = ? OR email = ? LIMIT 1");
-                $stmt->execute([$username, $email]);
-                if ($stmt->fetch()) {
-                    $message = "Username or email already exists.";
+            if ($attempt) {
+                $remainingAttempts = max(0, $maxAttempts - $attempt['attempts']);
+                $lockedOut = $attempt['attempts'] >= $maxAttempts && strtotime($attempt['last_attempt']) > strtotime("-{$lockoutMinutes} minutes");
+                if ($lockedOut) {
+                    $message = "Too many failed attempts for this account from your IP. Try again after {$lockoutMinutes} minutes.";
                     $isError = true;
-                } else {
-                    $hash = password_hash($password, PASSWORD_DEFAULT);
-                    $pdo->prepare("INSERT INTO admins (username, email, password, is_active, role, created_at) VALUES (?, ?, ?, 1, 'regular', NOW())")
-                        ->execute([$username, $email, $hash]);
-
-                    $pdo->prepare("UPDATE registration_tokens SET used = 1 WHERE id = ?")->execute([$validToken['id']]);
-
-                    $_SESSION['authenticated'] = true;
-                    $_SESSION['username'] = $username;
-                    $_SESSION['role'] = 'regular';
-
-                    header('Location: index.php');
-                    exit;
                 }
             }
+
+            if (!$isError) {
+                $normalizedToken = strtolower($token);
+                $normalizedEmail = strtolower($email);
+
+                $stmt = $pdo->prepare("SELECT id FROM registration_tokens WHERE LOWER(token) = ? AND LOWER(recipient_email) = ? AND used = 0 AND expires_at > NOW() LIMIT 1");
+                $stmt->execute([$normalizedToken, $normalizedEmail]);
+                $validToken = $stmt->fetch();
+
+                if (!$validToken) {
+                    $message = "Invalid or expired authorization token for this email.";
+                    $isError = true;
+                } else {
+                    $stmt = $pdo->prepare("SELECT id FROM admins WHERE username = ? OR email = ? LIMIT 1");
+                    $stmt->execute([$username, $email]);
+                    if ($stmt->fetch()) {
+                        $message = "Username or email already exists.";
+                        $isError = true;
+                    } else {
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                        $pdo->prepare("INSERT INTO admins (username, email, password, is_active, role, created_at) VALUES (?, ?, ?, 1, 'regular', NOW())")
+                            ->execute([$username, $email, $hash]);
+
+                        $pdo->prepare("UPDATE registration_tokens SET used = 1 WHERE id = ?")->execute([$validToken['id']]);
+                        $pdo->prepare("DELETE FROM login_attempts WHERE username = ? AND ip_address = ?")->execute([$username, $ip]);
+
+                        $_SESSION['authenticated'] = true;
+                        $_SESSION['username'] = $username;
+                        $_SESSION['role'] = 'regular';
+
+                        header('Location: index.php');
+                        exit;
+                    }
+                }
+            }
+
+            // If error occurred, increment attempt count
+            if ($isError) {
+                if ($attempt) {
+                    $pdo->prepare("UPDATE login_attempts SET attempts = attempts + 1, last_attempt = NOW() WHERE username = ? AND ip_address = ?")
+                        ->execute([$username, $ip]);
+                } else {
+                    $pdo->prepare("INSERT INTO login_attempts (username, ip_address, attempts, last_attempt) VALUES (?, ?, 1, NOW())")
+                        ->execute([$username, $ip]);
+                }
+
+                $remainingAttempts = max(0, $remainingAttempts - 1);
+                $message .= " You have {$remainingAttempts} attempt(s) left.";
+            }
+
         } catch (PDOException $e) {
             $message = "Server error: " . htmlspecialchars($e->getMessage());
             $isError = true;
@@ -77,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 min-h-screen flex items-center justify-center font-sans">
   <div class="w-full max-w-md bg-white/80 backdrop-blur-md border border-blue-100 rounded-2xl shadow-xl p-8">
-    <h2 class="text-xl font-bold text-blue-800 mb-4 text-center">🆕 Create User Account</h2>
+    <h2 class="text-xl font-bold text-blue-800 mb-4 text-center">Create User Account</h2>
 
     <?php if ($message): ?>
       <div class="p-3 rounded-md mb-4 text-sm text-center shadow-sm 

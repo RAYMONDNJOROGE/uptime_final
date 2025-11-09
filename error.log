@@ -25,3 +25,43 @@
 [10-Nov-2025 01:19:48 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
 [10-Nov-2025 01:19:53 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
 [10-Nov-2025 01:19:53 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:23 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:23 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:23 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:30 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:34 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:29:34 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:13 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:24 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:24 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:31:24 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:32:58 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:33:04 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:33:04 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:34:50 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:34:55 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:34:55 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:16 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:16 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:16 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:59 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:59 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:35:59 Africa/Nairobi] ✅ Connected to MikroTik at 175.0.0.1:8728
+[10-Nov-2025 01:45:34 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'uptime_hotspot.login_attempts' doesn't exist in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php:17
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php(17): PDO->prepare()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php on line 17
+[10-Nov-2025 01:45:36 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'uptime_hotspot.login_attempts' doesn't exist in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php:17
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php(17): PDO->prepare()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php on line 17
+[10-Nov-2025 02:05:08 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'username' in 'where clause' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php:24
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php(24): PDO->prepare()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\index.php on line 24

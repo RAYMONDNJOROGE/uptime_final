@@ -139,6 +139,27 @@ CREATE TABLE IF NOT EXISTS api_logs (
     INDEX idx_created_at (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS login_attempts (
+  username VARCHAR(50) NOT NULL,
+  ip_address VARCHAR(45) NOT NULL,
+  attempts INT NOT NULL DEFAULT 1,
+  last_attempt DATETIME NOT NULL,
+  PRIMARY KEY (username, ip_address),
+  INDEX idx_last_attempt (last_attempt)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DELETE FROM login_attempts WHERE last_attempt < DATE_SUB(NOW(), INTERVAL 1 DAY);
+
+-- 🚫 OTP request attempts (rate limiting)
+CREATE TABLE IF NOT EXISTS otp_attempts (
+    ip_address VARCHAR(45) PRIMARY KEY,
+    attempts INT NOT NULL DEFAULT 1,
+    last_attempt DATETIME NOT NULL,
+    first_attempt DATETIME NOT NULL,
+    INDEX idx_last_attempt (last_attempt)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 -- ⚙️ Settings
 CREATE TABLE IF NOT EXISTS settings (
     id INT AUTO_INCREMENT PRIMARY KEY,
