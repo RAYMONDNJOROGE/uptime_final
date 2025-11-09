@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->setFrom('uptimetechmasters@gmail.com', 'Uptime Hotspot');
                 $mail->addAddress($recipientEmail);
                 $mail->Subject = 'Your Admin Registration Token';
-                $mail->Body = "Hello,\n\nYou’ve been authorized to register as an admin.\n\nUse this token during registration:\n\n<span>$token</span>\n\nThis token expires in 5 minutes.";
+                $mail->Body = "Hello,\n\nYou’ve been authorized to register as an admin.\n\nUse this token during registration:\n\n$token\n\nThis token expires in 5 minutes.";
 
                 $mail->send();
                 $changePasswordMessage = '<div class="alert alert-success">Token sent to ' . htmlspecialchars($recipientEmail) . '.</div>';
