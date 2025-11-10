@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     error_log("Successful login for user: $username (Role: {$admin['role']})");
 
     // Redirect based on role
-    header('Location: ' . ($admin['role'] === 'super' ? 'admin.php' : 'dashboard_lite.php'));
+    header('Location: ' . ($admin['role'] === 'super' ? 'admin/admin.php' : 'admin/dashboard_lite.php'));
     exit;
 }
 ?>
