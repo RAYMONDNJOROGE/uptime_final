@@ -204,7 +204,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 2rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -213,7 +213,7 @@ body {
 .register-container {
   background: var(--dark);
   border: 1px solid var(--gray);
-  border-radius: 20px;
+  border-radius: 40px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   padding: 20px;
   width: 100%;
