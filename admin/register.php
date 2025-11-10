@@ -16,9 +16,20 @@ $pdo = getDBConnection();
 // Configuration
 $maxAttempts = 5;
 $lockoutMinutes = 15;
-$ip = $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $message = '';
 $messageType = '';
+$username = '';
+$email = '';
+
+// Handle feedback from redirected POST
+if (isset($_SESSION['registration_feedback'])) {
+    $message = $_SESSION['registration_feedback']['message'] ?? '';
+    $messageType = $_SESSION['registration_feedback']['type'] ?? '';
+    $username = $_SESSION['registration_feedback']['username'] ?? '';
+    $email = $_SESSION['registration_feedback']['email'] ?? '';
+    unset($_SESSION['registration_feedback']);
+}
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm = $_POST['confirm_password'] ?? '';
     $token = trim($_POST['auth_token'] ?? '');
 
-    // Basic validation
     if (empty($username) || empty($email) || empty($password) || empty($confirm) || empty($token)) {
         $message = "All fields are required.";
         $messageType = 'error';
@@ -49,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messageType = 'error';
     } else {
         try {
-            // Check rate limiting
             $stmt = $pdo->prepare("SELECT attempts, last_attempt FROM login_attempts WHERE username = ? OR ip_address = ?");
             $stmt->execute([$username, $ip]);
             $attempt = $stmt->fetch();
@@ -59,97 +68,88 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $remainingAttempts = max(0, $maxAttempts - $attempt['attempts']);
                 $lastAttemptTime = strtotime($attempt['last_attempt']);
                 $lockoutExpiry = strtotime("+{$lockoutMinutes} minutes", $lastAttemptTime);
-                
+
                 $lockedOut = $attempt['attempts'] >= $maxAttempts && time() < $lockoutExpiry;
-                
+
                 if ($lockedOut) {
                     $minutesLeft = ceil(($lockoutExpiry - time()) / 60);
                     $message = "Too many registration attempts. Please try again in {$minutesLeft} minute(s).";
                     $messageType = 'error';
-                    goto display_page;
                 }
             }
 
-            // Normalize for comparison
-            $normalizedToken = strtolower(trim($token));
-            $normalizedEmail = strtolower(trim($email));
+            if (!$message) {
+                $normalizedToken = strtolower(trim($token));
+                $normalizedEmail = strtolower(trim($email));
 
-            // Validate token
-            $stmt = $pdo->prepare("
-                SELECT id, recipient_email, expires_at 
-                FROM registration_tokens 
-                WHERE LOWER(token) = ? 
-                AND LOWER(recipient_email) = ? 
-                AND used = 0 
-                LIMIT 1
-            ");
-            $stmt->execute([$normalizedToken, $normalizedEmail]);
-            $validToken = $stmt->fetch();
+                $stmt = $pdo->prepare("
+                    SELECT id, recipient_email, expires_at 
+                    FROM registration_tokens 
+                    WHERE LOWER(token) = ? 
+                    AND LOWER(recipient_email) = ? 
+                    AND used = 0 
+                    LIMIT 1
+                ");
+                $stmt->execute([$normalizedToken, $normalizedEmail]);
+                $validToken = $stmt->fetch();
 
-            if (!$validToken) {
-                $message = "Invalid authorization token or email mismatch.";
-                $messageType = 'error';
-                
-                // Track failed attempt
-                if ($attempt) {
-                    $pdo->prepare("UPDATE login_attempts SET attempts = attempts + 1, last_attempt = NOW() WHERE username = ? OR ip_address = ?")
-                        ->execute([$username, $ip]);
-                } else {
-                    $pdo->prepare("INSERT INTO login_attempts (username, ip_address, attempts, last_attempt) VALUES (?, ?, 1, NOW())")
-                        ->execute([$username, $ip]);
-                }
-                
-                $remainingAttempts--;
-                if ($remainingAttempts > 0) {
-                    $message .= " You have {$remainingAttempts} attempt(s) remaining.";
-                }
-            } elseif (strtotime($validToken['expires_at']) < time()) {
-                $message = "This authorization token has expired. Please request a new one.";
-                $messageType = 'error';
-            } else {
-                // Check if username or email already exists
-                $stmt = $pdo->prepare("SELECT id FROM admins WHERE LOWER(username) = ? OR LOWER(email) = ? LIMIT 1");
-                $stmt->execute([strtolower($username), $normalizedEmail]);
-                
-                if ($stmt->fetch()) {
-                    $message = "Username or email is already registered.";
+                if (!$validToken) {
+                    $message = "Invalid authorization token or email mismatch.";
+                    $messageType = 'error';
+
+                    if ($attempt) {
+                        $pdo->prepare("UPDATE login_attempts SET attempts = attempts + 1, last_attempt = NOW() WHERE username = ? OR ip_address = ?")
+                            ->execute([$username, $ip]);
+                    } else {
+                        $pdo->prepare("INSERT INTO login_attempts (username, ip_address, attempts, last_attempt) VALUES (?, ?, 1, NOW())")
+                            ->execute([$username, $ip]);
+                    }
+
+                    $remainingAttempts--;
+                    if ($remainingAttempts > 0) {
+                        $message .= " You have {$remainingAttempts} attempt(s) remaining.";
+                    }
+                } elseif (strtotime($validToken['expires_at']) < time()) {
+                    $message = "This authorization token has expired. Please request a new one.";
                     $messageType = 'error';
                 } else {
-                    // Create new admin account
-                    $hash = password_hash($password, PASSWORD_DEFAULT);
-                    
-                    $stmt = $pdo->prepare("
-                        INSERT INTO admins (username, email, password, is_active, role, created_at) 
-                        VALUES (?, ?, ?, 1, 'regular', NOW())
-                    ");
-                    $stmt->execute([$username, $email, $hash]);
-                    $newAdminId = $pdo->lastInsertId();
+                    $stmt = $pdo->prepare("SELECT id FROM admins WHERE LOWER(username) = ? OR LOWER(email) = ? LIMIT 1");
+                    $stmt->execute([strtolower($username), $normalizedEmail]);
 
-                    // Mark token as used
-                    $pdo->prepare("UPDATE registration_tokens SET used = 1, used_at = NOW() WHERE id = ?")
-                        ->execute([$validToken['id']]);
+                    if ($stmt->fetch()) {
+                        $message = "Username or email is already registered.";
+                        $messageType = 'error';
+                    } else {
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                    // Clear any failed attempts
-                    $pdo->prepare("DELETE FROM login_attempts WHERE username = ? OR ip_address = ?")
-                        ->execute([$username, $ip]);
+                        $stmt = $pdo->prepare("
+                            INSERT INTO admins (username, email, password, is_active, role, created_at) 
+                            VALUES (?, ?, ?, 1, 'regular', NOW())
+                        ");
+                        $stmt->execute([$username, $email, $hash]);
+                        $newAdminId = $pdo->lastInsertId();
 
-                    // Log the registration
-                    error_log("New admin registered: $username (ID: $newAdminId, Email: $email)");
+                        $pdo->prepare("UPDATE registration_tokens SET used = 1, used_at = NOW() WHERE id = ?")
+                            ->execute([$validToken['id']]);
 
-                    // Auto-login the new user
-                    session_regenerate_id(true);
-                    $_SESSION['authenticated'] = true;
-                    $_SESSION['username'] = $username;
-                    $_SESSION['admin_id'] = $newAdminId;
-                    $_SESSION['role'] = 'regular';
-                    $_SESSION['email'] = $email;
-                    $_SESSION['last_activity'] = time();
-                    $_SESSION['login_time'] = time();
+                        $pdo->prepare("DELETE FROM login_attempts WHERE username = ? OR ip_address = ?")
+                            ->execute([$username, $ip]);
 
-                    // Set success message and redirect
-                    $_SESSION['login_success'] = "Account created successfully! Welcome, $username.";
-                    header('Location: dashboard_lite.php');
-                    exit;
+                        error_log("New admin registered: $username (ID: $newAdminId, Email: $email)");
+
+                        session_regenerate_id(true);
+                        $_SESSION['authenticated'] = true;
+                        $_SESSION['username'] = $username;
+                        $_SESSION['admin_id'] = $newAdminId;
+                        $_SESSION['role'] = 'regular';
+                        $_SESSION['email'] = $email;
+                        $_SESSION['last_activity'] = time();
+                        $_SESSION['login_time'] = time();
+
+                        $_SESSION['login_success'] = "Account created successfully! Welcome, $username.";
+                        header('Location: dashboard_lite.php');
+                        exit;
+                    }
                 }
             }
 
@@ -159,9 +159,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messageType = 'error';
         }
     }
-}
 
-display_page:
+    // Store feedback and redirect
+    $_SESSION['registration_feedback'] = [
+        'message' => $message,
+        'type' => $messageType,
+        'username' => $username,
+        'email' => $email
+    ];
+    header("Location: register.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -204,7 +212,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -215,10 +223,10 @@ body {
   border: 1px solid var(--gray);
   border-radius: 40px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 40px;
   width: 100%;
   max-width: 500px;
-  max-height: 95vh;
+  max-height: 90vh;
   overflow-y: auto;
   color: var(--text);
   scrollbar-width: thin;

@@ -5,3 +5,276 @@
 [10-Nov-2025 07:33:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
 [10-Nov-2025 07:33:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
 [10-Nov-2025 07:35:36 Africa/Nairobi] Password reset attempted for non-existent email: raymondnjoroge19@gmail.com
+[10-Nov-2025 07:44:41 Africa/Nairobi] Failed login attempt for username: fanatik
+[10-Nov-2025 07:44:59 Africa/Nairobi] Failed login attempt for username: rtgccd
+[10-Nov-2025 07:45:21 Africa/Nairobi] Failed login attempt for username: fanatik
+[10-Nov-2025 07:45:30 Africa/Nairobi] Failed login attempt for username: tgtfff
+[10-Nov-2025 07:45:37 Africa/Nairobi] Failed login attempt for username: yyyggg
+[10-Nov-2025 07:46:06 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 07:46:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:46:08 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:46:08 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:46:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:46:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:46:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Creating/updating user: KGX5ZP with plan: 30min (uptime: 30m, profile: 30_Minutes)
+[10-Nov-2025 07:47:10 Africa/Nairobi] Creating new user: KGX5ZP
+[10-Nov-2025 07:47:10 Africa/Nairobi] User KGX5ZP created successfully
+[10-Nov-2025 07:47:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:47:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:13 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:13 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:49:13 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 07:51:08 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 07:55:47 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 64
+[10-Nov-2025 07:55:47 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 102
+[10-Nov-2025 07:55:47 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:107
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(107): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 107
+[10-Nov-2025 07:55:55 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 64
+[10-Nov-2025 07:55:55 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 102
+[10-Nov-2025 07:55:55 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:107
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(107): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 107
+[10-Nov-2025 07:58:11 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 07:58:31 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 07:58:36 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 07:59:22 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 08:00:38 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:99
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(99): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 99
+[10-Nov-2025 08:02:28 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ip' in 'field list' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:51
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(51): PDO->prepare()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 51
+[10-Nov-2025 08:04:41 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 63
+[10-Nov-2025 08:04:41 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 101
+[10-Nov-2025 08:04:41 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:106
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(106): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 106
+[10-Nov-2025 08:05:50 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 64
+[10-Nov-2025 08:05:50 Africa/Nairobi] PHP Warning:  Undefined variable $record in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 102
+[10-Nov-2025 08:05:50 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '::1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:107
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(107): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 107
+[10-Nov-2025 08:09:12 Africa/Nairobi] Password reset attempted for non-existent email: raymondnjoroge19@gmail.com
+[10-Nov-2025 08:10:25 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 08:10:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:52 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:52 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:10:52 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:11 Africa/Nairobi] New admin registered: fanatik (ID: 7, Email: raymondnjoroge19@gmail.com)
+[10-Nov-2025 08:12:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:41 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 08:12:42 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:42 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:42 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:44 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:44 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:44 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:52 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:52 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:54 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:54 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:12:54 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:25:47 Africa/Nairobi] OTP rate limit exceeded for email: raymondnjoroge20@gmail.com from IP: 127.0.0.1
+[10-Nov-2025 08:26:09 Africa/Nairobi] OTP rate limit exceeded for email: raymondnjoroge20@gmail.com from IP: 127.0.0.1
+[10-Nov-2025 08:35:32 Africa/Nairobi] OTP rate limit exceeded for email: raymondnjoroge20@gmail.com from IP: 127.0.0.1
+[10-Nov-2025 08:37:03 Africa/Nairobi] Failed login attempt for username: raymondnjoroge20@gmail.com
+[10-Nov-2025 08:37:29 Africa/Nairobi] Password reset attempted for non-existent email: raymondnjoroge19@gmail.com
+[10-Nov-2025 08:40:26 Africa/Nairobi] OTP sent successfully to email: raymondnjoroge20@gmail.com
+[10-Nov-2025 08:43:04 Africa/Nairobi] OTP sent successfully to email: raymondnjoroge20@gmail.com
+[10-Nov-2025 08:46:06 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 08:46:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:09 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:09 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:09 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:35 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:37 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:51 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:54 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:55 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:55 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:46:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:17 Africa/Nairobi] New admin registered: fanatik (ID: 8, Email: raymondnjoroge19@gmail.com)
+[10-Nov-2025 08:48:17 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:17 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:18 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:20 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:32 Africa/Nairobi] Successful login for user: fanatik (Role: regular)
+[10-Nov-2025 08:48:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:35 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:35 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:48:36 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:26 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 08:58:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:27 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:29 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:29 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:30 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:38 Africa/Nairobi] PHP Warning:  Undefined variable $admin in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[10-Nov-2025 08:58:38 Africa/Nairobi] PHP Warning:  Trying to access array offset on null in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[10-Nov-2025 08:58:53 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:53 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:54 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 08:58:57 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:37 Africa/Nairobi] Successful login for user: fanatik (Role: regular)
+[10-Nov-2025 09:00:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:38 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:40 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:40 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:00:40 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:21 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 09:01:22 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 09:01:22 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:22 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:23 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:24 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:24 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:24 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:26 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:26 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:26 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:33 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:34 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:36 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:36 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:36 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:41 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:41 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:42 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:42 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:43 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:01:43 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:02 Africa/Nairobi] PHP Warning:  Undefined variable $admin in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[10-Nov-2025 09:02:02 Africa/Nairobi] PHP Warning:  Trying to access array offset on null in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[10-Nov-2025 09:02:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:07 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:02:08 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:11 Africa/Nairobi] New admin registered: fanatik (ID: 9, Email: raymondnjoroge19@gmail.com)
+[10-Nov-2025 09:03:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:12 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:14 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:03:33 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'otp_attempts.PRIMARY' in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php:98
+Stack trace:
+#0 C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php(98): PDOStatement->execute()
+#1 {main}
+  thrown in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\request_reset.php on line 98
+[10-Nov-2025 09:06:01 Africa/Nairobi] OTP sent successfully to email: raymondnjoroge19@gmail.com
+[10-Nov-2025 09:07:58 Africa/Nairobi] Successful login for user: fanatik (Role: regular)
+[10-Nov-2025 09:07:59 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:07:59 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:08:00 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:08:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:08:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:08:02 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:49 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[10-Nov-2025 09:22:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:50 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:58 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:58 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:58 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:59 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:59 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:22:59 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:09 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:09 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:10 Africa/Nairobi] Creating/updating user: ACNYMS with plan: 2h (uptime: 2h, profile: 2_Hours)
+[10-Nov-2025 09:23:10 Africa/Nairobi] Creating new user: ACNYMS
+[10-Nov-2025 09:23:10 Africa/Nairobi] User ACNYMS created successfully
+[10-Nov-2025 09:23:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[10-Nov-2025 09:23:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)

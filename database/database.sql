@@ -153,8 +153,8 @@ DELETE FROM login_attempts WHERE last_attempt < DATE_SUB(NOW(), INTERVAL 1 DAY);
 -- 🚫 OTP request attempts (rate limiting)
 CREATE TABLE IF NOT EXISTS otp_attempts (
     ip_address VARCHAR(45) PRIMARY KEY,
+    email VARCHAR(100) PRIMARY KEY,
     attempts INT NOT NULL DEFAULT 1,
-    email VARCHAR(100) DEFAULT NOT NULL,
     last_attempt DATETIME NOT NULL,
     first_attempt DATETIME NOT NULL,
     INDEX idx_last_attempt (last_attempt)

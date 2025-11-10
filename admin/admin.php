@@ -214,7 +214,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             try {
-                $token = bin2hex(random_bytes(16));
+                function generateToken($length = 6) {
+                    $characters = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz'; // excludes 0 and o
+                    $token = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $token .= $characters[random_int(0, strlen($characters) - 1)];
+                }
+                return $token;
+            }
+
+                $token = generateToken();
                 $expires = date('Y-m-d H:i:s', strtotime('+5 minutes'));
                 $adminId = $_SESSION['admin_id'];
 
@@ -233,8 +242,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->setFrom('uptimetechmasters@gmail.com', 'Uptime Hotspot');
                 $mail->addAddress($recipientEmail);
                 $mail->Subject = 'Your Admin Registration Token';
-                $mail->Body = "Hello,\n\nYou've been authorized to register.\n\nCopy this token and use it during registration:\n\n$token\n\nThis token expires in 5 minutes.";
-
+                
+                $mail->Body = "
+                                <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
+                                <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center;'>
+                                <h1 style='color: white; margin: 0;'>Uptime Hotspot</h1>
+                                </div>
+                                <div style='padding: 30px; background: #f8f9fa;'>
+                                <h2 style='color: #333;'>Account Creation Request</h2>
+                                <p style='color: #666; line-height: 1.6;'>
+                                Hello <strong>{$admin['username']}</strong>,<br><br>
+                                You requested to register. Use the following Auth code:
+                                </p>
+                                <div style='background: white; padding: 20px; text-align: center; border-radius: 8px; margin: 20px 0;'>
+                                <h1 style='color: #667eea; margin: 0; font-size: 36px; letter-spacing: 8px;'>{$token}</h1>
+                                </div>
+                                <p style='color: #666; line-height: 1.6;'>
+                                This code will expire in 5 minutes</strong>.<br><br>
+                                If you didn't request this, please ignore this email.
+                                </p>
+                                </div>
+                                <div style='padding: 20px; text-align: center; background: #333; color: #999; font-size: 12px;'>
+                                <p>© " . date('Y') . " Uptime Tech Masters. All rights reserved.</p>
+                                </div>
+                                </div>
+                    ";
+                    $mail->AltBody = "Copy this token and use it during registration:\n\n$token\n\nThis token expires in 5 minutes.";
+                
                 $mail->send();
                 $_SESSION['flash_message'] = "Token sent to $recipientEmail";
                 $_SESSION['flash_type'] = 'success';
@@ -792,7 +826,7 @@ $regularAdmins = $stmt->fetchAll();
         <!-- Credentials Display -->
         <?php if ($showCredentials): ?>
             <div class="credentials-box">
-                <h3 style="margin-bottom: 5px; font-size: 1.5rem;">✅ User Created Successfully!</h3>
+                <h3 style="margin-bottom: 5px; font-size: 1.5rem;">User Created Successfully!</h3>
                 <p style="opacity: 0.9; font-size: 0.95rem;">Share these credentials with your client</p>
                 <div class="credentials-grid">
                     <div class="credential-item">

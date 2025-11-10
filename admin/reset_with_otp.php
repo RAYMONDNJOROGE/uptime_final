@@ -1,10 +1,22 @@
 <?php
 require_once __DIR__ . '/../config.php';
+session_start();
 $pdo = getDBConnection();
+
 $message = '';
 $isSuccess = false;
-$ip = $_SERVER['REMOTE_ADDR'];
+$email = '';
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 
+// Handle feedback from redirected POST
+if (isset($_SESSION['otp_reset_feedback'])) {
+    $message = $_SESSION['otp_reset_feedback']['message'] ?? '';
+    $isSuccess = $_SESSION['otp_reset_feedback']['success'] ?? false;
+    $email = $_SESSION['otp_reset_feedback']['email'] ?? '';
+    unset($_SESSION['otp_reset_feedback']);
+}
+
+// Handle POST submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $otp = trim($_POST['otp'] ?? '');
@@ -31,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo->prepare("UPDATE admins SET password = ?, reset_otp = NULL, otp_expires_at = NULL WHERE email = ?")
                 ->execute([$hash, $email]);
 
-            // Log the reset event
             $pdo->prepare("INSERT INTO api_logs (endpoint, method, request_data, response_data, status_code, ip_address, created_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?)")->execute([
                 'reset_with_otp.php',
@@ -47,6 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $isSuccess = true;
         }
     }
+
+    // Store feedback and redirect
+    $_SESSION['otp_reset_feedback'] = [
+        'message' => $message,
+        'success' => $isSuccess,
+        'email' => $email
+    ];
+    header("Location: reset_with_otp.php");
+    exit;
 }
 ?>
 
@@ -90,7 +110,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 1rem;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -98,12 +118,12 @@ body {
 .container {
   background: var(--dark);
   border: 1px solid var(--gray);
-  border-radius: 15px;
+  border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   padding: 40px;
   width: 100%;
   max-width: 500px;
-  max-height: 95vh;
+  max-height: 90vh;
   overflow-y: auto;
   color: var(--text);
   scrollbar-width: thin;
@@ -120,6 +140,12 @@ body {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    .divider {
+            height: 1px;
+            background: var(--gray);
+            margin: 25px 0;
+        }
 
     p.subtitle {
       text-align: center;
@@ -342,14 +368,17 @@ body {
         </div>
       </div>
 
+
       <button type="submit" class="submit-btn">
         <i class="fas fa-sync-alt"></i> Reset Password
       </button>
     </form>
+    <div class="divider"></div>
 
     <div class="back-link">
       <a href="/..index.php"><i class="fas fa-arrow-left"></i> Back to Login</a>
     </div>
+
   </div>
 
   <script>
