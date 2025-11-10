@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) DEFAULT NULL,
+    email VARCHAR(100) DEFAULT UNIQUE NOT NULL,
     reset_token VARCHAR(64) DEFAULT NULL,
     reset_expires DATETIME DEFAULT NULL,
     reset_otp VARCHAR(10) DEFAULT NULL,
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS admins (
 CREATE TABLE IF NOT EXISTS registration_tokens (
     id INT AUTO_INCREMENT PRIMARY KEY,
     token VARCHAR(64) UNIQUE NOT NULL,
+    used_at DATETIME DEFAULT NULL AFTER token
     recipient_email VARCHAR(100) NOT NULL,
     expires_at DATETIME NOT NULL,
     used BOOLEAN DEFAULT FALSE,
@@ -141,8 +142,8 @@ CREATE TABLE IF NOT EXISTS api_logs (
 
 CREATE TABLE IF NOT EXISTS login_attempts (
   username VARCHAR(50) NOT NULL,
-  ip_address VARCHAR(45) NOT NULL,
   attempts INT NOT NULL DEFAULT 1,
+  ip_address VARCHAR(45) DEFAULT NULL,
   last_attempt DATETIME NOT NULL,
   PRIMARY KEY (username, ip_address),
   INDEX idx_last_attempt (last_attempt)
@@ -153,6 +154,7 @@ DELETE FROM login_attempts WHERE last_attempt < DATE_SUB(NOW(), INTERVAL 1 DAY);
 CREATE TABLE IF NOT EXISTS otp_attempts (
     ip_address VARCHAR(45) PRIMARY KEY,
     attempts INT NOT NULL DEFAULT 1,
+    email VARCHAR(100) DEFAULT NOT NULL,
     last_attempt DATETIME NOT NULL,
     first_attempt DATETIME NOT NULL,
     INDEX idx_last_attempt (last_attempt)
