@@ -1,15 +1,14 @@
 CREATE DATABASE IF NOT EXISTS uptime_hotspot;
 USE uptime_hotspot;
 
--- 🔐 Users table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    plan VARCHAR(10) NOT NULL,
+    plan VARCHAR(10) DEFAULT NULL,
     mac VARCHAR(20) DEFAULT NULL,
-    created_at DATETIME NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     expires_at DATETIME DEFAULT NULL,
     is_active TINYINT(1) DEFAULT 1,
     last_login DATETIME DEFAULT NULL,
@@ -18,15 +17,16 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_username (username),
     INDEX idx_phone (phone),
     INDEX idx_is_active (is_active),
-    FOREIGN KEY (plan) REFERENCES plans(code) ON DELETE SET NULL
+    CONSTRAINT fk_users_plan FOREIGN KEY (plan) REFERENCES plans(code) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- 🔐 Admins table
 CREATE TABLE IF NOT EXISTS admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) DEFAULT UNIQUE NOT NULL,
+    email VARCHAR(100) DEFAULT NULL,
     reset_token VARCHAR(64) DEFAULT NULL,
     reset_expires DATETIME DEFAULT NULL,
     reset_otp VARCHAR(10) DEFAULT NULL,
@@ -150,16 +150,15 @@ CREATE TABLE IF NOT EXISTS login_attempts (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 DELETE FROM login_attempts WHERE last_attempt < DATE_SUB(NOW(), INTERVAL 1 DAY);
 
--- 🚫 OTP request attempts (rate limiting)
 CREATE TABLE IF NOT EXISTS otp_attempts (
-    ip_address VARCHAR(45) PRIMARY KEY,
-    email VARCHAR(100) PRIMARY KEY,
+    ip_address VARCHAR(45) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     attempts INT NOT NULL DEFAULT 1,
     last_attempt DATETIME NOT NULL,
     first_attempt DATETIME NOT NULL,
+    PRIMARY KEY (ip_address, email),
     INDEX idx_last_attempt (last_attempt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 
 -- ⚙️ Settings

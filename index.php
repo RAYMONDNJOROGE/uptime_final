@@ -89,29 +89,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$username]);
     $admin = $stmt->fetch();
 
+    $ip = $_SERVER['REMOTE_ADDR'];
+
     if (!$admin || !password_verify($password, $admin['password'])) {
-        // Increment failed attempts
-        if ($attempt) {
-            $pdo->prepare("UPDATE login_attempts SET attempts = attempts + 1, last_attempt = NOW() WHERE username = ?")
-                ->execute([$username]);
-        } else {
-            $pdo->prepare("INSERT INTO login_attempts (username, attempts, last_attempt) VALUES (?, 1, NOW())")
-                ->execute([$username]);
-        }
+    // Insert or update login attempt
+        $pdo->prepare("
+            INSERT INTO login_attempts (username, ip_address, attempts, last_attempt)
+            VALUES (?, ?, 1, NOW())
+            ON DUPLICATE KEY UPDATE
+                    attempts = attempts + 1,
+                    last_attempt = NOW()
+            ")->execute([$username, $ip]);
 
-        $remainingAttempts = max(0, $remainingAttempts - 1);
-        
-        if ($remainingAttempts > 0) {
-            $_SESSION['login_error'] = "Invalid username or password. You have {$remainingAttempts} attempt(s) remaining.";
-        } else {
+            $remainingAttempts = max(0, $remainingAttempts - 1);
+
+            if ($remainingAttempts > 0) {
+                $_SESSION['login_error'] = "Invalid username or password. You have {$remainingAttempts} attempt(s) remaining.";
+            } else {
             $_SESSION['login_error'] = "Invalid username or password. Your account has been temporarily locked for {$lockoutMinutes} minutes.";
-        }
-        
-        error_log("Failed login attempt for username: $username");
-        header("Location: index.php");
-        exit;
-    }
+            }
 
+    error_log("Failed login attempt for username: $username from IP: $ip");
+    header("Location: index.php");
+    exit;
+}
     // Successful login - clear attempts
     $pdo->prepare("DELETE FROM login_attempts WHERE username = ?")->execute([$username]);
 

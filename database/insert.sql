@@ -31,8 +31,8 @@ INSERT INTO admins (
     role,
     created_at
 ) VALUES (
-    'superadmin',                                -- username
-    '$2y$10$eW5X9YzQv1gEJZKzjK9uUuYxHf3VZLzK1aZx9dJZx9dJZx9dJZx9dJ', -- hashed password
+    'raymondnjoroge',                                -- username
+    '$2y$12$2vLSJ.DgaeBSZ46VTwJD7.8U8M196hPrDQuvBj2txSDMJKeFd/vdi', -- hashed password
     'raymondnjoroge20@gmail.com',               -- email
     1,                                           -- is_active
     'super',                                     -- role
