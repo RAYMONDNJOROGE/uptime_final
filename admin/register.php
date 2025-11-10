@@ -609,7 +609,7 @@ body {
         </form>
 
         <div class="back-link">
-            <a href="/..index.php">
+            <a href="../index.php">
                 <i class="fas fa-arrow-left"></i>
                 Back to Login
             </a>

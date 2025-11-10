@@ -15,7 +15,7 @@ $timeoutDuration = 1800; // 30 minutes
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeoutDuration) {
     session_unset();
     session_destroy();
-    header('Location: /..index.php?timeout=1');
+    header('Location: ../index.php?timeout=1');
     exit;
 }
 
@@ -23,7 +23,7 @@ $_SESSION['last_activity'] = time();
 
 // 🔐 Redirect to login if not authenticated
 if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
     exit;
 }
 
