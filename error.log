@@ -278,3 +278,43 @@ Stack trace:
 [10-Nov-2025 09:23:10 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
 [10-Nov-2025 09:23:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
 [10-Nov-2025 09:23:11 Africa/Nairobi] Connected to MikroTik at 175.0.0.1:8728 (attempt 1)
+[11-Nov-2025 13:25:14 Africa/Nairobi] Failed login attempt for username: raymondnjoroge from IP: ::1
+[11-Nov-2025 13:25:27 Africa/Nairobi] Failed login attempt for username: raymondnjoroge from IP: ::1
+[11-Nov-2025 13:27:57 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[11-Nov-2025 13:27:57 Africa/Nairobi] MikroTik connection attempt 1 failed: Connection failed: A socket operation was attempted to an unreachable host (10065)
+[11-Nov-2025 13:27:58 Africa/Nairobi] MikroTik connection attempt 2 failed: Connection failed: A socket operation was attempted to an unreachable host (10065)
+[11-Nov-2025 13:27:58 Africa/Nairobi] MikroTik connection failed after 2 attempts: Connection failed: A socket operation was attempted to an unreachable host (10065)
+[11-Nov-2025 13:28:49 Africa/Nairobi] Email sending failed for raymondnjoroge20@gmail.com: SMTP Error: Could not connect to SMTP host. Failed to connect to server SMTP server error: Failed to connect to server Additional SMTP info: php_network_getaddresses: getaddrinfo for smtp.gmail.com failed: No such host is known
+[11-Nov-2025 13:31:13 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[11-Nov-2025 13:31:23 Africa/Nairobi] Authentication error: Read timeout - no response received
+[11-Nov-2025 13:31:23 Africa/Nairobi] MikroTik connection attempt 1 failed: Authentication failed
+[11-Nov-2025 13:31:34 Africa/Nairobi] Authentication error: Read timeout - no response received
+[11-Nov-2025 13:31:34 Africa/Nairobi] MikroTik connection attempt 2 failed: Authentication failed
+[11-Nov-2025 13:31:34 Africa/Nairobi] MikroTik connection failed after 2 attempts: Authentication failed
+[11-Nov-2025 13:31:57 Africa/Nairobi] MikroTik connection attempt 1 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:32:07 Africa/Nairobi] MikroTik connection attempt 2 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:32:07 Africa/Nairobi] MikroTik connection failed after 2 attempts: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:32:07 Africa/Nairobi] PHP Warning:  Undefined variable $admin in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[11-Nov-2025 13:32:07 Africa/Nairobi] PHP Warning:  Trying to access array offset on null in C:\Users\Tech Fanatik\OneDrive\Desktop\backend\admin\admin.php on line 254
+[11-Nov-2025 13:32:21 Africa/Nairobi] MikroTik connection attempt 1 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:32:32 Africa/Nairobi] MikroTik connection attempt 2 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:32:32 Africa/Nairobi] MikroTik connection failed after 2 attempts: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:35:08 Africa/Nairobi] OTP sent successfully to email: raymondnjoroge20@gmail.com
+[11-Nov-2025 13:35:57 Africa/Nairobi] Failed login attempt for username: raymondnjoroge20@gmail.com from IP: ::1
+[11-Nov-2025 13:37:10 Africa/Nairobi] Failed login attempt for username: raymondnjoroge20@gmail.com from IP: ::1
+[11-Nov-2025 13:37:20 Africa/Nairobi] Successful login for user: raymondnjoroge20@gmail.com (Role: super)
+[11-Nov-2025 13:37:30 Africa/Nairobi] MikroTik connection attempt 1 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:37:40 Africa/Nairobi] MikroTik connection attempt 2 failed: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 13:37:40 Africa/Nairobi] MikroTik connection failed after 2 attempts: Connection failed: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond (10060)
+[11-Nov-2025 18:42:22 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:42:50 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:42:53 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:42:55 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:42:57 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:43:27 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:43:28 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:43:29 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:46:58 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:46:59 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:47:14 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'
+[11-Nov-2025 18:47:16 Africa/Nairobi] Database connection failed: SQLSTATE[HY000] [1049] Unknown database 'uptime_hotspot'

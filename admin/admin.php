@@ -40,7 +40,7 @@ use PHPMailer\PHPMailer\Exception;
 $pdo = getDBConnection();
 
 function generateCode($length = 6) {
-    $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    $characters = 'ABCDE123456789';
     $code = '';
     for ($i = 0; $i < $length; $i++) {
         $code .= $characters[random_int(0, strlen($characters) - 1)];

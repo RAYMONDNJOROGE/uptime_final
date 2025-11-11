@@ -14,7 +14,7 @@ require_once __DIR__ . '/config.php';
 
 // Redirect if already logged in
 if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
-    header('Location: ' . ($_SESSION['role'] === 'super' ? '../admin/admin.php' : '../admin/dashboard_lite.php'));
+    header('Location: ' . ($_SESSION['role'] === 'super' ? '../admin.php' : '../admin/dashboard_lite.php'));
     exit;
 }
 
